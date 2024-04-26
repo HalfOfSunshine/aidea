@@ -306,6 +306,7 @@ class MyApp extends StatefulWidget {
         !stabilityAISelfHosted;
 
     _router = GoRouter(
+      //如果已登录，跳转到登录页面，未登录到主路由
       initialLocation: shouldLogin ? '/login' : Ability().homeRoute,
       observers: [
         BotToastNavigatorObserver(),
