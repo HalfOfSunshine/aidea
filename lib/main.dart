@@ -299,11 +299,7 @@ class MyApp extends StatefulWidget {
     final stabilityAISelfHosted =
         settingRepo.boolDefault(settingStabilityAISelfHosted, false);
 
-    final shouldLogin = (apiServerToken == null || apiServerToken == '') &&
-        !usingGuestMode &&
-        !openAISelfHosted &&
-        !deepAISelfHosted &&
-        !stabilityAISelfHosted;
+    final shouldLogin = false;
 
     _router = GoRouter(
       //如果已登录，跳转到登录页面，未登录到主路由

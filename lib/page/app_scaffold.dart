@@ -37,6 +37,7 @@ class _AppScaffoldState extends State<AppScaffold> {
 
   @override
   void initState() {
+    //全局监听显示隐藏BottomNavigatorBar
     cancelHideBottomNavigatorBarEventListener =
         GlobalEvent().on("hideBottomNavigatorBar", (data) {
       if (mounted) {
@@ -61,6 +62,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   List<BottomNavigationBarConfig> _bottomNavigationBarList(
       {int? currentIndex}) {
     return [
+      // 尝试注释，确认为tab item.当前页面所在的tab不能注视，否则整个tab不显示
       if (Ability().enableChat)
         BottomNavigationBarConfig(
           builder: (index, customColors) => createAnimatedNavBarItem(
@@ -94,6 +96,8 @@ class _AppScaffoldState extends State<AppScaffold> {
           ),
           route: '/creative-gallery',
         ),
+
+      // 尝试注释，确认为tab item
       if (Ability().enableCreationIsland)
         BottomNavigationBarConfig(
           builder: (index, customColors) => createAnimatedNavBarItem(
