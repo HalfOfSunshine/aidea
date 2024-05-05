@@ -312,27 +312,13 @@ class MyApp extends StatefulWidget {
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) {
+            //TabBar
             return AppScaffold(
               settingRepo: settingRepo,
               child: child,
             );
           },
           routes: [
-            GoRoute(
-              path: '/login',
-              parentNavigatorKey: _shellNavigatorKey,
-              pageBuilder: (context, state) => transitionResolver(
-                MultiBlocProvider(
-                  providers: [
-                    BlocProvider.value(value: versionBloc),
-                  ],
-                  child: SignInScreen(
-                    settings: settingRepo,
-                    username: state.queryParameters['username'],
-                  ),
-                ),
-              ),
-            ),
             GoRoute(
               path: '/signin-or-signup',
               parentNavigatorKey: _shellNavigatorKey,
@@ -1357,18 +1343,6 @@ class _MyAppState extends State<MyApp> {
         universalLink: universalLink,
       );
     }
-
-    // weChatResponseEventHandler.listen((event) {
-    //   print("=====================");
-    //   print("errorCode: ${event.errCode}");
-    //   print("errorMessage: ${event.errStr}");
-    //   if (event is WeChatShareResponse) {
-    //     print("type: ${event.type}");
-    //     print("success:${event.isSuccessful}");
-    //   }
-    //   showSuccessMessage('分享成功', duration: const Duration(seconds: 3));
-    // });
-
     super.initState();
   }
 
@@ -1409,6 +1383,7 @@ class _MyAppState extends State<MyApp> {
                       child: BotToastInit()(context, child),
                     );
                   },
+                  // routerConfig配置为go_router
                   routerConfig: widget._router,
                   supportedLocales: widget.localization.supportedLocales,
                   localizationsDelegates:

@@ -40,6 +40,7 @@ class _AppScaffoldState extends State<AppScaffold> {
     //全局监听显示隐藏BottomNavigatorBar
     cancelHideBottomNavigatorBarEventListener =
         GlobalEvent().on("hideBottomNavigatorBar", (data) {
+      //它表示当前State对象是否已经被插入到树中去了
       if (mounted) {
         setState(() {
           _showBottomNavigatorBar = false;
@@ -66,13 +67,18 @@ class _AppScaffoldState extends State<AppScaffold> {
       if (Ability().enableChat)
         BottomNavigationBarConfig(
           builder: (index, customColors) => createAnimatedNavBarItem(
+            //icon
             icon: Icons.question_answer_outlined,
+            //高亮icon
             activatedIcon: Icons.question_answer,
+            //高亮颜色
             activatedColor: customColors.linkColor,
             //多语言  lang-    chatAnywhere: '聊一聊',
             label: AppLocale.chatAnywhere.getString(context),
+            //index记录
             activated: currentIndex == index,
           ),
+          //绑定的路由
           route: '/chat-chat',
         ),
       if (Ability().enableDigitalHuman)
